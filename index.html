@@ -1,440 +1,535 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<meta name="theme-color" content="#0e0e0e" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#f7f5f1" />
 <title>ESTATEZW — Refined Living, Zimbabwe</title>
 <meta name="description" content="ESTATEZW curates Zimbabwe's most distinguished homes — from Harare estates to Victoria Falls retreats. Private viewings, bespoke acquisitions." />
 <meta property="og:title" content="ESTATEZW — Refined Living, Zimbabwe" />
 <meta property="og:description" content="A curated portfolio of Zimbabwe's finest residences." />
 <meta property="og:type" content="website" />
-<link rel="manifest" href="manifest.webmanifest" />
-<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
-<link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preconnect" href="https://images.unsplash.com" />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/css/styles.css" />
-<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<style>
+/* ===== ESTATEZW — Premium Light Theme (No Dark Mode) ===== */
+:root{
+  --paper:#f7f5f1;
+  --paper-2:#efece6;
+  --ink:#0e0e0e;
+  --ink-2:#1a1a1a;
+  --muted:#6b6b66;
+  --line:#e6e2da;
+  --bronze:#9a6b3f;
+  --bronze-2:#b6864f;
+  --gold-soft:#d8c2a0;
+  --shadow-1: 0 1px 2px rgba(20,20,20,.04), 0 4px 14px rgba(20,20,20,.06);
+  --shadow-2: 0 10px 30px rgba(20,20,20,.08), 0 30px 80px rgba(20,20,20,.12);
+  --shadow-3: 0 30px 80px rgba(20,20,20,.18), 0 60px 120px rgba(20,20,20,.18);
+  --r-sm:8px; --r-md:14px; --r-lg:22px; --r-xl:32px;
+  --serif: "Fraunces", "Cormorant Garamond", Georgia, serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --container: 1280px;
+  --ease: cubic-bezier(.2,.7,.2,1);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  font-family:var(--sans);
+  background:var(--paper);
+  color:var(--ink);
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img,video,iframe{max-width:100%;display:block}
+[hidden]{display:none !important}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:transparent;color:inherit}
+fieldset{border:0;margin:0;padding:0}
+
+/* Typography */
+.display{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(2.6rem, 7.2vw, 6.4rem);
+  line-height:.98;
+  letter-spacing:-.02em;
+  margin:0;
+}
+.display em{font-style:italic; color:var(--bronze)}
+.h2{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(2rem, 4.6vw, 3.6rem);
+  line-height:1.05;
+  letter-spacing:-.015em;
+  margin:0;
+}
+.h3{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:clamp(1.4rem, 2.4vw, 1.9rem);
+  margin:0 0 .5rem;
+}
+.kicker{
+  font-family:var(--sans);
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  font-size:.72rem;
+  color:var(--muted);
+  font-weight:500;
+  margin:0 0 1.2rem;
+}
+.lede{
+  font-size:clamp(1rem, 1.4vw, 1.15rem);
+  color:var(--muted);
+  max-width:48ch;
+  margin:1.4rem 0 0;
+}
+.sub{color:var(--muted);max-width:60ch;margin:.7rem auto 0}
+
+/* Buttons */
+.btn{
+  display:inline-flex;align-items:center;gap:.55rem;
+  height:48px;padding:0 1.4rem;border-radius:999px;
+  font-weight:500;font-size:.92rem;
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+  white-space:nowrap;
+}
+.btn-dark{background:var(--ink);color:var(--paper);box-shadow:var(--shadow-1)}
+.btn-dark:hover{transform:translateY(-2px);box-shadow:var(--shadow-2)}
+.btn-bronze{background:var(--bronze);color:#fff;box-shadow:var(--shadow-1)}
+.btn-bronze:hover{background:var(--bronze-2);transform:translateY(-2px);box-shadow:var(--shadow-2)}
+.btn-outline{border:1px solid var(--ink);color:var(--ink)}
+.btn-outline:hover{background:var(--ink);color:var(--paper)}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid rgba(20,20,20,.18)}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+.btn-link{background:transparent;color:var(--ink);padding:0 .4rem;height:auto}
+.btn-link span{transition:transform .3s var(--ease);display:inline-block}
+.btn-link:hover span{transform:translateX(6px)}
+
+/* Navigation */
+.nav{
+  position:fixed;inset:0 0 auto 0;z-index:50;
+  display:flex;align-items:center;gap:1.5rem;
+  padding:1.1rem clamp(1rem, 4vw, 2.2rem);
+  transition:padding .3s var(--ease), background .3s var(--ease), backdrop-filter .3s;
+  border-bottom:1px solid transparent;
+}
+.nav.scrolled{
+  padding:.7rem clamp(1rem, 4vw, 2.2rem);
+  background:rgba(247,245,241,.92);
+  backdrop-filter:saturate(160%) blur(14px);
+  border-bottom-color:var(--line);
+}
+.brand{display:flex;align-items:center;gap:.6rem;font-family:var(--serif);font-size:1.15rem;letter-spacing:.04em}
+.brand-name em{color:var(--bronze);font-style:italic;font-weight:500}
+.brand-mark{
+  width:22px;height:22px;border-radius:50%;
+  background:radial-gradient(circle at 30% 30%, var(--gold-soft), var(--bronze) 70%, var(--ink));
+}
+.nav-links{display:flex;gap:1.6rem;margin-left:auto;font-size:.92rem}
+.nav-links a{position:relative;color:var(--ink);opacity:.78;transition:opacity .2s}
+.nav-links a::after{
+  content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:currentColor;
+  transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ease);
+}
+.nav-links a:hover{opacity:1}
+.nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
+.nav-cta{height:40px;padding:0 1rem;font-size:.85rem}
+.nav-burger{
+  display:none;width:42px;height:42px;border-radius:50%;
+  border:1px solid var(--line);background:rgba(255,255,255,.6);
+  position:relative;
+}
+.nav-burger span{
+  position:absolute;left:11px;right:11px;height:1.5px;background:var(--ink);
+  transition:transform .3s var(--ease), top .3s var(--ease);
+}
+.nav-burger span:nth-child(1){top:16px}
+.nav-burger span:nth-child(2){top:24px}
+.nav-burger.open span:nth-child(1){top:20px;transform:rotate(45deg)}
+.nav-burger.open span:nth-child(2){top:20px;transform:rotate(-45deg)}
+
+.drawer{
+  position:fixed;inset:0;z-index:45;background:var(--paper);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem;
+  font-family:var(--serif);font-size:2rem;
+  transform:translateY(-100%);transition:transform .5s var(--ease);
+  padding:2rem;
+}
+.drawer.open{transform:translateY(0)}
+.drawer .btn{font-family:var(--sans);font-size:1rem;margin-top:1rem}
+
+/* Hero */
+.hero{
+  position:relative;
+  min-height:100vh;
+  min-height:100svh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 clamp(1rem, 4vw, 3rem);
+  overflow:hidden;
+  isolation:isolate;
+  text-align:center;
+}
+.hero-media{position:absolute;inset:-8% 0 0 0;z-index:-1;will-change:transform}
+.hero-media img{width:100%;height:108%;object-fit:cover}
+.hero-shade{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,.45) 0%, rgba(0,0,0,.25) 50%, rgba(0,0,0,.6) 100%);
+}
+.hero-inner{max-width:900px;margin:0 auto;width:100%;position:relative;z-index:2}
+.hero-inner .display{color:#fff;text-shadow:0 6px 30px rgba(0,0,0,.35)}
+.hero-inner .lede{color:rgba(255,255,255,.9);text-shadow:0 2px 10px rgba(0,0,0,.35);margin:1.5rem auto 0}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2rem;justify-content:center}
+.hero-cta .btn-link{color:#fff}
+.hero-card{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.4rem;
+  padding:1.6rem 1.8rem;
+  margin:3rem auto 0;
+  max-width:680px;
+  border-radius:var(--r-lg);
+  background:rgba(255,255,255,.86);
+  backdrop-filter:blur(12px);
+  text-align:center;
+}
+
+/* Sections */
+.section{
+  max-width:var(--container);margin:0 auto;
+  padding:clamp(4rem, 9vw, 8rem) clamp(1rem, 4vw, 2.4rem);
+}
+.section.ink{max-width:none;background:var(--ink);color:var(--paper);margin-top:0}
+.section.ink>*{max-width:var(--container);margin-left:auto;margin-right:auto}
+.section.soft{background:var(--paper-2);max-width:none;margin:0}
+.section.soft>*{max-width:var(--container);margin-left:auto;margin-right:auto}
+.sec-head{text-align:center;margin-bottom:3.2rem}
+.sec-head.light .kicker{color:#a8a298}
+.sec-head.light .h2{color:#fff}
+
+.brand-strip{
+  max-width:var(--container);margin:0 auto;
+  padding:clamp(4rem,9vw,7rem) clamp(1rem,4vw,2.4rem);
+  text-align:center;
+}
+.statement{
+  font-family:var(--serif);font-size:clamp(1.8rem, 4.4vw, 3.4rem);line-height:1.18;
+  margin:0 auto;max-width:24ch;
+}
+.statement em{color:var(--bronze);font-style:italic}
+.strip-meta{display:flex;justify-content:center;align-items:center;gap:.9rem;flex-wrap:wrap;margin-top:2.4rem;color:var(--muted);font-size:.86rem;letter-spacing:.18em;text-transform:uppercase}
+.strip-meta i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--bronze)}
+
+/* Grids */
+.grid.listings{display:grid;gap:1.6rem;grid-template-columns:repeat(3,1fr)}
+@media (max-width:1024px){.grid.listings{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.grid.listings{grid-template-columns:1fr}}
+
+.card{
+  background:#fff;border-radius:var(--r-lg);overflow:hidden;
+  box-shadow:var(--shadow-1);
+  transition:transform .6s var(--ease), box-shadow .6s var(--ease);
+}
+.card:hover{transform:translateY(-6px);box-shadow:var(--shadow-3)}
+.card .img{position:relative;aspect-ratio:4/3;overflow:hidden;background:#eee}
+.card .img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.card:hover .img img{transform:scale(1.06)}
+.card .price-tag{
+  position:absolute;left:1rem;bottom:1rem;
+  background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+  padding:.45rem .8rem;border-radius:999px;font-weight:500;font-size:.86rem;
+}
+.card .body{padding:1.1rem 1.2rem 1.3rem}
+.card .body h3{font-family:var(--serif);font-weight:500;font-size:1.18rem;margin:0 0 .3rem}
+.card .meta{display:flex;gap:1rem;color:var(--muted);font-size:.84rem}
+.card .loc{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--bronze);margin-bottom:.45rem}
+
+.filter{
+  display:grid;grid-template-columns:1.2fr 1fr .8fr 1.6fr auto;
+  gap:1rem;align-items:end;padding:1.2rem;border-radius:var(--r-lg);
+  margin-bottom:2.4rem;background:rgba(0,0,0,.02);border:1px solid var(--line);
+}
+.filter label{display:flex;flex-direction:column;gap:.4rem;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.filter select,.filter input{
+  background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:.7rem .8rem;font:inherit;color:var(--ink);
+}
+.filter .range b{color:var(--ink);margin-left:.4rem}
+@media (max-width:900px){.filter{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.filter{grid-template-columns:1fr}}
+
+/* Packages */
+.packages{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+@media (max-width:900px){.packages{grid-template-columns:1fr}}
+.pkg{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:2rem 1.8rem;
+  box-shadow:var(--shadow-1);transition:transform .5s var(--ease);
+}
+.pkg:hover{transform:translateY(-4px);box-shadow:var(--shadow-2)}
+.pkg.featured{background:var(--ink);color:var(--paper);transform:scale(1.02)}
+.pkg .badge{
+  position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+  background:var(--bronze);color:#fff;font-size:.7rem;padding:.4rem .8rem;border-radius:999px;
+}
+.pkg h3{font-family:var(--serif);font-size:1.4rem;margin:0 0 .8rem}
+.pkg .price{font-family:var(--serif);font-size:2.4rem}
+.pkg .price span{font-size:1.2rem;vertical-align:super;margin-right:2px}
+.pkg .price em{font-style:italic;font-size:1.6rem;color:var(--bronze)}
+.pkg ul{list-style:none;padding:0;margin:1.6rem 0;display:flex;flex-direction:column;gap:.65rem}
+.pkg ul li{display:flex;align-items:flex-start;gap:.55rem}
+.pkg ul li::before{content:"✓";color:var(--bronze);font-weight:bold}
+.pkg ul li.off{opacity:.42}
+.pkg ul li.off::before{content:"○";color:inherit}
+
+.video-wrap{
+  border-radius:var(--r-xl);overflow:hidden;aspect-ratio:16/9;
+  box-shadow:var(--shadow-3);position:relative;
+}
+.video-wrap video{width:100%;height:100%;object-fit:cover}
+.play-btn{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:84px;height:84px;border-radius:50%;background:rgba(255,255,255,.18);
+  backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.32);
+  display:grid;place-items:center;color:#fff;
+}
+.play-btn svg{width:28px;fill:#fff;margin-left:3px}
+.play-btn.hidden{opacity:0;pointer-events:none}
+
+.demo{margin-top:3rem;text-align:center}
+.floorplan{position:relative;border-radius:var(--r-xl);overflow:hidden}
+.floorplan img{width:100%;display:block}
+.hot{
+  position:absolute;width:34px;height:34px;border-radius:50%;
+  background:rgba(255,255,255,.92);color:var(--ink);font-weight:600;
+  transform:translate(-50%,-50%);transition:transform .3s;
+}
+.hot:hover,.hot.active{background:var(--bronze);color:#fff}
+.hot-info{
+  position:absolute;left:1.2rem;bottom:1.2rem;
+  background:rgba(20,20,20,.8);backdrop-filter:blur(14px);
+  color:#fff;padding:.9rem 1.1rem;border-radius:var(--r-md);
+  max-width:320px;
+}
+
+.gallery{display:grid;gap:.9rem;grid-template-columns:repeat(4,1fr);grid-auto-rows:160px}
+.gallery a{display:block;overflow:hidden;border-radius:var(--r-md);box-shadow:var(--shadow-1)}
+.gallery a img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s}
+.gallery a:hover img{transform:scale(1.07)}
+.gallery a.tall{grid-row:span 2}
+.gallery a.wide{grid-column:span 2}
+@media (max-width:900px){.gallery{grid-template-columns:repeat(2,1fr)}}
+
+.lightbox{position:fixed;inset:0;z-index:80;background:rgba(10,10,10,.92);display:none;place-items:center}
+.lightbox.open{display:grid}
+.lightbox img{max-width:95vw;max-height:90vh;border-radius:var(--r-md)}
+.lb-close{position:absolute;top:1rem;right:1.2rem;color:#fff;font-size:2rem;width:48px;height:48px;background:rgba(255,255,255,.1);border-radius:50%}
+
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-bottom:3rem}
+@media (max-width:900px){.cases{grid-template-columns:1fr}}
+.case{background:#fff;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-1)}
+.case .img{aspect-ratio:5/3;overflow:hidden}
+.case .img img{width:100%;height:100%;object-fit:cover}
+.case .body{padding:1.4rem}
+.case h4{font-family:var(--serif);font-size:1.2rem;margin:0 0 .2rem}
+.case .loc{font-size:.74rem;letter-spacing:.16em;color:var(--bronze);margin-bottom:1rem}
+.case .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;border-top:1px solid var(--line);padding-top:1rem}
+.case .stats b.up{color:#2e7d50}
+
+.roi{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-xl);padding:2rem;display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:2rem}
+@media (max-width:1024px){.roi{grid-template-columns:1fr}}
+.roi-form{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.roi-form input{border:1px solid var(--line);border-radius:10px;padding:.7rem .8rem}
+.roi-out>div{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding:.3rem 0}
+.roi-chart{width:100%;height:90px}
+
+.t-track{display:flex;transition:transform .8s var(--ease)}
+.t-card{flex:0 0 100%;padding:2rem;display:grid;grid-template-columns:auto 1fr;gap:1.6rem;background:#fff;border-radius:var(--r-xl);border:1px solid var(--line)}
+.t-card img{width:88px;height:88px;border-radius:50%;object-fit:cover}
+.t-card blockquote{margin:0;font-family:var(--serif);font-size:clamp(1.1rem,1.8vw,1.5rem)}
+.t-dots{display:flex;justify-content:center;gap:.5rem;margin-top:1.4rem}
+.t-dots button{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.t-dots button.active{width:28px;background:var(--ink)}
+
+.map-wrap{position:relative;border-radius:var(--r-xl);overflow:hidden;height:480px}
+.map-wrap iframe{width:100%;height:100%;border:0}
+.map-card{
+  position:absolute;left:1.4rem;bottom:1.4rem;padding:1.4rem;border-radius:var(--r-lg);
+  background:rgba(255,255,255,.9);max-width:320px;
+}
+.map-card a{color:var(--bronze)}
+
+.booking{max-width:760px;margin:0 auto;padding:2rem;border-radius:var(--r-xl);background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-2);position:relative}
+.steps{display:flex;gap:1rem;margin-bottom:1.6rem;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.step.active{color:var(--ink);border-bottom:1px solid var(--bronze);padding-bottom:.5rem}
+.step-pane{display:none;grid-template-columns:1fr 1fr;gap:1rem}
+.step-pane.active{display:grid}
+.step-pane label{display:flex;flex-direction:column;gap:.4rem;font-size:.74rem;text-transform:uppercase;color:var(--muted)}
+.step-pane input,.step-pane select,.step-pane textarea{border:1px solid var(--line);border-radius:10px;padding:.85rem 1rem;background:#fff}
+.actions{grid-column:1/-1;display:flex;justify-content:flex-end;gap:.6rem;margin-top:.6rem}
+.success{position:absolute;inset:0;background:rgba(255,255,255,.95);display:none;flex-direction:column;align-items:center;justify-content:center;border-radius:var(--r-xl)}
+.success:not([hidden]){display:flex}
+.success svg{width:60px;color:var(--bronze);margin-bottom:1rem}
+
+.footer{background:var(--ink);color:var(--paper);padding:5rem clamp(1rem,4vw,3rem) 2.4rem}
+.foot-cta{max-width:var(--container);margin:0 auto;text-align:center}
+.newsletter{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+.newsletter input{
+  flex:1 1 240px;height:48px;padding:0 1.1rem;border-radius:999px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;
+}
+.foot-meta{max-width:var(--container);margin:3.6rem auto 0;display:flex;justify-content:space-between;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.1);padding-top:2rem;font-size:.84rem}
+.foot-meta nav{display:flex;gap:1.4rem}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease), transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal.delay-1{transition-delay:.08s}
+.reveal.delay-2{transition-delay:.16s}
+
+@media (max-width:880px){
+  .nav-links,.nav-cta{display:none}
+  .nav-burger{display:inline-flex;margin-left:auto}
+  .hero-card{grid-template-columns:1fr 1fr}
+  .hero-card>div:nth-child(3){grid-column:1/-1}
+  .t-card{grid-template-columns:1fr;text-align:center}
+  .t-card img{margin:0 auto}
+}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none}
+  *{transition-duration:.01ms!important}
+}
+</style>
 </head>
 <body>
 
-<!-- ===== NAV ===== -->
 <header class="nav" id="nav">
-  <a href="#top" class="brand" aria-label="ESTATEZW home">
-    <span class="brand-mark"></span>
-    <span class="brand-name">ESTATE<em>ZW</em></span>
-  </a>
-  <nav class="nav-links" aria-label="Primary">
-    <a href="#listings">Portfolio</a>
-    <a href="#discover">Discover</a>
-    <a href="#packages">Services</a>
-    <a href="#tour">Tour</a>
-    <a href="#case">Results</a>
-    <a href="#contact">Contact</a>
+  <a href="#top" class="brand"><span class="brand-mark"></span><span class="brand-name">ESTATE<em>ZW</em></span></a>
+  <nav class="nav-links">
+    <a href="#listings">Portfolio</a><a href="#discover">Discover</a>
+    <a href="#packages">Services</a><a href="#tour">Tour</a>
+    <a href="#case">Results</a><a href="#contact">Contact</a>
   </nav>
-  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light/dark">
-    <svg class="ic-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-    <svg class="ic-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-  </button>
   <a href="#contact" class="btn btn-ghost nav-cta">Book a viewing</a>
-  <button class="nav-burger" aria-label="Open menu" aria-expanded="false" id="burger">
-    <span></span><span></span>
-  </button>
+  <button class="nav-burger" id="burger"><span></span><span></span></button>
 </header>
-
-<aside class="drawer" id="drawer" aria-hidden="true">
-  <a href="#listings">Portfolio</a>
-  <a href="#discover">Discover</a>
-  <a href="#packages">Services</a>
-  <a href="#tour">Tour</a>
-  <a href="#case">Results</a>
-  <a href="#contact">Contact</a>
+<aside class="drawer" id="drawer">
+  <a href="#listings">Portfolio</a><a href="#discover">Discover</a>
+  <a href="#packages">Services</a><a href="#tour">Tour</a>
+  <a href="#case">Results</a><a href="#contact">Contact</a>
   <a href="#contact" class="btn btn-dark">Book a viewing</a>
 </aside>
 
 <main id="top">
-
-<!-- ===== HERO ===== -->
 <section class="hero">
   <div class="hero-media" data-parallax="0.25">
-    <img
-      src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=2400&q=80"
-      alt="A modern hillside villa at dusk"
-      fetchpriority="high"
-      decoding="async"
-    />
+    <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=2400&q=80" alt="Modern villa" fetchpriority="high" />
     <div class="hero-shade"></div>
   </div>
-
-<div class="hero-inner" style="display:flex!important;flex-direction:column!important;align-items:center!important;text-align:center!important;max-width:900px!important;margin:0 auto!important;">
-   <h1 class="display reveal" style="text-align:center!important;width:100%!important;">
-      Homes that <em>hold</em><br/>their quiet.
-    </h1>
-    <p class="lede reveal">
-      A curated portfolio of distinguished residences across Harare,
-      Bulawayo, Nyanga and Victoria Falls — represented with discretion.
-    </p>
+  <div class="hero-inner">
+    <h1 class="display reveal">Homes that <em>hold</em><br/>their quiet.</h1>
+    <p class="lede reveal">A curated portfolio of distinguished residences across Harare, Bulawayo, Nyanga and Victoria Falls — represented with discretion.</p>
     <div class="hero-cta reveal">
       <a href="#listings" class="btn btn-dark">View portfolio</a>
-      <a href="#tour" class="btn btn-link">Watch the film <span aria-hidden="true">→</span></a>
+      <a href="#tour" class="btn btn-link">Watch the film <span>→</span></a>
     </div>
-
     <div class="hero-card glass reveal">
-      <div>
-        <span class="num" data-count="142">0</span>
-        <small>Residences placed</small>
-      </div>
-      <div>
-        <span class="num" data-count="11">0</span>
-        <small>Years curating</small>
-      </div>
-      <div>
-        <span class="num" data-count="98">0</span><span class="num-suffix">%</span>
-        <small>Client retention</small>
-      </div>
+      <div><span class="num" data-count="142">0</span><br/><small>Residences placed</small></div>
+      <div><span class="num" data-count="11">0</span><br/><small>Years curating</small></div>
+      <div><span class="num" data-count="98">0</span><small>% retention</small></div>
     </div>
   </div>
-
-  <a href="#brand" class="scroll-cue" aria-label="Scroll">
-    <span></span>
-  </a>
 </section>
-<!-- ===== BRAND STRIP ===== -->
+
 <section class="brand-strip" id="brand">
   <p class="kicker reveal">An ethos</p>
-  <h2 class="statement reveal">
-    We don't sell properties.<br/>
-    We <em>place</em> people in homes that<br/>fit the life they're building.
-  </h2>
-  <div class="strip-meta reveal">
-    <span>Harare</span><i></i>
-    <span>Bulawayo</span><i></i>
-    <span>Nyanga</span><i></i>
-    <span>Victoria Falls</span>
-  </div>
+  <h2 class="statement reveal">We don't sell properties.<br/>We <em>place</em> people in homes that fit the life they're building.</h2>
+  <div class="strip-meta reveal"><span>Harare</span><i></i><span>Bulawayo</span><i></i><span>Nyanga</span><i></i><span>Victoria Falls</span></div>
 </section>
 
-<!-- ===== FEATURED LISTINGS ===== -->
-<section class="section" id="listings">
-  <header class="sec-head">
-    <p class="kicker reveal">Featured</p>
-    <h2 class="h2 reveal">The current portfolio</h2>
-    <p class="sub reveal">Six residences, hand-selected this season.</p>
-  </header>
-  <div class="grid listings tilt-grid" id="featuredGrid"><!-- JS populates --></div>
-</section>
+<section class="section" id="listings"><div class="sec-head"><p class="kicker reveal">Featured</p><h2 class="h2 reveal">The current portfolio</h2></div><div class="grid listings tilt-grid" id="featuredGrid"></div></section>
 
-<!-- ===== DISCOVER / FILTER ===== -->
-<section class="section ink" id="discover">
-  <header class="sec-head light">
-    <p class="kicker reveal">Discover</p>
-    <h2 class="h2 reveal">Find your address.</h2>
-    <p class="sub reveal">Filter the full catalogue. Results refine instantly.</p>
-  </header>
+<section class="section ink" id="discover"><div class="sec-head light"><p class="kicker reveal">Discover</p><h2 class="h2 reveal">Find your address.</h2></div>
+<div class="filter glass-dark reveal"><label><span>City</span><select id="fCity"><option value="">Any</option><option>Harare</option><option>Bulawayo</option><option>Nyanga</option><option>Victoria Falls</option></select></label><label><span>Type</span><select id="fType"><option value="">Any</option><option>Villa</option><option>Apartment</option><option>Estate</option></select></label><label><span>Beds</span><select id="fBeds"><option value="0">Any</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option></select></label><label class="range"><span>Max price <b id="fPriceLabel">$5.0M</b></span><input type="range" id="fPrice" min="200000" max="5000000" step="50000" value="5000000" /></label><button class="btn btn-bronze" id="fReset">Reset</button></div>
+<div class="grid listings light-on-dark" id="discoverGrid"></div><p class="empty" id="emptyState" hidden>No residences match — try widening your search.</p></section>
 
-  <div class="filter glass-dark reveal">
-    <label>
-      <span>City</span>
-      <select id="fCity">
-        <option value="">Any</option>
-        <option>Harare</option><option>Bulawayo</option>
-        <option>Nyanga</option><option>Victoria Falls</option>
-      </select>
-    </label>
-    <label>
-      <span>Type</span>
-      <select id="fType">
-        <option value="">Any</option>
-        <option>Villa</option><option>Apartment</option>
-        <option>Estate</option><option>Commercial</option>
-      </select>
-    </label>
-    <label>
-      <span>Beds</span>
-      <select id="fBeds">
-        <option value="0">Any</option>
-        <option value="2">2+</option><option value="3">3+</option>
-        <option value="4">4+</option><option value="5">5+</option>
-      </select>
-    </label>
-    <label class="range">
-      <span>Max price <b id="fPriceLabel">$5.0M</b></span>
-      <input type="range" id="fPrice" min="200000" max="5000000" step="50000" value="5000000" />
-    </label>
-    <button class="btn btn-bronze" id="fReset">Reset</button>
-  </div>
+<section class="section" id="packages"><div class="sec-head"><p class="kicker reveal">Services</p><h2 class="h2 reveal">Three ways to work with us.</h2></div>
+<div class="packages reveal"><article class="pkg"><h3>Essential</h3><p class="price"><span>$</span>2,500<small>/listing</small></p><ul><li>Professional photography</li><li>Listing on ESTATEZW & portals</li><li class="off">Drone film</li><li class="off">Private viewings</li></ul><a href="#contact" class="btn btn-outline">Begin</a></article>
+<article class="pkg featured"><span class="badge">Most chosen</span><h3>Signature</h3><p class="price"><span>$</span>6,800<small>/listing</small></p><ul><li>Everything in Essential</li><li>Cinematic drone film</li><li>Private viewings (4 incl.)</li><li>Featured placement</li></ul><a href="#contact" class="btn btn-dark">Begin</a></article>
+<article class="pkg"><h3>Bespoke</h3><p class="price">By <em>arrangement</em></p><ul><li>Off-market acquisition</li><li>Legal & escrow concierge</li><li>Lifetime advisory</li></ul><a href="#contact" class="btn btn-outline">Enquire</a></article></div></section>
 
-  <div class="grid listings light-on-dark" id="discoverGrid"></div>
-  <p class="empty" id="emptyState" hidden>No residences match — try widening your search.</p>
-</section>
+<section class="section ink" id="tour"><div class="sec-head light"><p class="kicker reveal">The film</p><h2 class="h2 reveal">Step inside, before you arrive.</h2></div>
+<div class="video-wrap reveal"><video id="heroVid" playsinline muted loop poster="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1800&q=80"><source src="https://cdn.coverr.co/videos/coverr-aerial-view-of-a-luxury-villa-2633/1080p.mp4" type="video/mp4" /></video><button class="play-btn" id="playBtn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button></div>
+<div class="demo reveal"><h3 class="h3">Interactive floor plan</h3><div class="floorplan"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=80" /><button class="hot" style="left:18%;top:62%" data-room="Great room" data-info="Vaulted ceilings, fireplace">1</button><button class="hot" style="left:54%;top:38%" data-room="Primary suite" data-info="Private terrace">2</button><button class="hot" style="left:78%;top:70%" data-room="Pool deck" data-info="Horizon pool">3</button><div class="hot-info" id="hotInfo"><strong>Tap a marker</strong><span>Discover each space.</span></div></div></div></section>
 
-<!-- ===== PACKAGES ===== -->
-<section class="section" id="packages">
-  <header class="sec-head">
-    <p class="kicker reveal">Services</p>
-    <h2 class="h2 reveal">Three ways to work with us.</h2>
-    <p class="sub reveal">Compare openly. Choose what fits.</p>
-  </header>
+<section class="section" id="gallery"><div class="sec-head"><p class="kicker reveal">Gallery</p><h2 class="h2 reveal">Quiet details, loud presence.</h2></div><div class="gallery" id="gallery-grid"></div></section>
+<div class="lightbox" id="lightbox"><button class="lb-close">×</button><img alt="" /></div>
 
-  <div class="packages reveal">
-    <article class="pkg">
-      <h3>Essential</h3>
-      <p class="price"><span>$</span>2,500<small>/listing</small></p>
-      <ul>
-        <li>Professional photography</li>
-        <li>Listing on ESTATEZW & 4 portals</li>
-        <li>Buyer screening</li>
-        <li class="off">Drone film</li>
-        <li class="off">Private viewings</li>
-        <li class="off">Bespoke acquisition</li>
-      </ul>
-      <a href="#contact" class="btn btn-outline">Begin</a>
-    </article>
+<section class="section soft" id="case"><div class="sec-head"><p class="kicker reveal">Results</p><h2 class="h2 reveal">Numbers we're proud of.</h2></div><div class="cases" id="caseGrid"></div>
+<div class="roi glass reveal"><div class="roi-copy"><h3 class="h3">Return projection</h3><p class="sub">Estimate trajectory over time.</p></div>
+<form class="roi-form" id="roiForm"><label><span>Price (USD)</span><input type="number" id="rPrice" value="450000" /></label><label><span>Rental yield %</span><input type="number" id="rYield" value="7" step="0.1" /></label><label><span>Appreciation %</span><input type="number" id="rApp" value="4" step="0.1" /></label><label><span>Years</span><input type="number" id="rYears" value="10" /></label></form>
+<div class="roi-out"><div><small>Projected value</small><b id="oVal">$0</b></div><div><small>Rental income</small><b id="oRent">$0</b></div><div><small>Total return</small><b id="oTot">$0</b></div><div><small>ROI</small><b id="oRoi">0%</b></div><svg class="roi-chart" id="roiChart" viewBox="0 0 300 90"></svg></div></div></section>
 
-    <article class="pkg featured">
-      <span class="badge">Most chosen</span>
-      <h3>Signature</h3>
-      <p class="price"><span>$</span>6,800<small>/listing</small></p>
-      <ul>
-        <li>Everything in Essential</li>
-        <li>Cinematic drone film</li>
-        <li>Private viewings (4 incl.)</li>
-        <li>Staging consultation</li>
-        <li>Featured placement</li>
-        <li class="off">Bespoke acquisition</li>
-      </ul>
-      <a href="#contact" class="btn btn-dark">Begin</a>
-    </article>
+<section class="section" id="words"><div class="sec-head"><p class="kicker reveal">Words</p><h2 class="h2 reveal">From the people we've placed.</h2></div><div class="testimonials"><div class="t-track" id="tTrack"></div><div class="t-dots" id="tDots"></div></div></section>
 
-    <article class="pkg">
-      <h3>Bespoke</h3>
-      <p class="price">By <em>arrangement</em></p>
-      <ul>
-        <li>Everything in Signature</li>
-        <li>Off-market acquisition</li>
-        <li>Legal & escrow concierge</li>
-        <li>Relocation support</li>
-        <li>Architect introductions</li>
-        <li>Lifetime advisory</li>
-      </ul>
-      <a href="#contact" class="btn btn-outline">Enquire</a>
-    </article>
-  </div>
-</section>
+<section class="section ink" id="visit"><div class="sec-head light"><p class="kicker reveal">Visit</p><h2 class="h2 reveal">Borrowdale, Harare.</h2></div><div class="map-wrap"><iframe src="https://www.google.com/maps?q=Borrowdale,Harare,Zimbabwe&output=embed" loading="lazy" title="Map"></iframe><div class="map-card"><h4>ESTATEZW Atelier</h4><p>14 Whitwell Road, Borrowdale, Harare</p><a href="tel:+263242000000">+263 242 000 000</a><br/><a href="mailto:hello@estatezw.com">hello@estatezw.com</a></div></div></section>
 
-<!-- ===== VIDEO + INTERACTIVE FLOOR PLAN ===== -->
-<section class="section ink" id="tour">
-  <header class="sec-head light">
-    <p class="kicker reveal">The film</p>
-    <h2 class="h2 reveal">Step inside, before you arrive.</h2>
-  </header>
-
-  <div class="video-wrap reveal">
-    <video id="heroVid" playsinline muted loop preload="metadata"
-      poster="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1800&q=80">
-      <source src="https://cdn.coverr.co/videos/coverr-aerial-view-of-a-luxury-villa-2633/1080p.mp4" type="video/mp4" />
-    </video>
-    <button class="play-btn" id="playBtn" aria-label="Play video">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-    </button>
-  </div>
-
-  <div class="demo reveal">
-    <h3 class="h3">Interactive floor plan</h3>
-    <p class="sub light">Tap the markers to explore each room of <em>Villa Borrowdale</em>.</p>
-    <div class="floorplan">
-      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=80" alt="Villa interior" />
-      <button class="hot" style="left:18%;top:62%" data-room="Great room" data-info="9.2m vaulted ceilings, oak floors, double-sided fireplace.">1</button>
-      <button class="hot" style="left:54%;top:38%" data-room="Primary suite" data-info="Private terrace, dual dressings, en-suite with rain shower.">2</button>
-      <button class="hot" style="left:78%;top:70%" data-room="Pool deck" data-info="20m horizon pool, outdoor kitchen, sunset orientation.">3</button>
-      <button class="hot" style="left:36%;top:24%" data-room="Kitchen" data-info="Hand-built joinery, induction island, butler's pantry.">4</button>
-      <div class="hot-info" id="hotInfo">
-        <strong>Tap a marker</strong>
-        <span>Discover what makes each space.</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== GALLERY ===== -->
-<section class="section" id="gallery">
-  <header class="sec-head">
-    <p class="kicker reveal">Gallery</p>
-    <h2 class="h2 reveal">Quiet details, loud presence.</h2>
-  </header>
-  <div class="gallery reveal" id="gallery-grid"></div>
-</section>
-
-<div class="lightbox" id="lightbox" aria-hidden="true">
-  <button class="lb-close" aria-label="Close">×</button>
-  <img alt="" />
-</div>
-
-<!-- ===== CASE STUDIES + ROI ===== -->
-<section class="section soft" id="case">
-  <header class="sec-head">
-    <p class="kicker reveal">Results</p>
-    <h2 class="h2 reveal">Numbers we're proud of.</h2>
-  </header>
-
-  <div class="cases reveal" id="caseGrid"></div>
-
-  <div class="roi glass reveal">
-    <div class="roi-copy">
-      <h3 class="h3">Return projection</h3>
-      <p class="sub">Estimate the trajectory of a Zimbabwean residence over time. Indicative only.</p>
-    </div>
-    <form class="roi-form" id="roiForm" novalidate>
-      <label><span>Purchase price (USD)</span><input type="number" id="rPrice" value="450000" min="50000" /></label>
-      <label><span>Annual rental yield %</span><input type="number" id="rYield" value="7" step="0.1" /></label>
-      <label><span>Annual appreciation %</span><input type="number" id="rApp" value="4" step="0.1" /></label>
-      <label><span>Years</span><input type="number" id="rYears" value="10" min="1" max="30" /></label>
-    </form>
-    <div class="roi-out">
-      <div><small>Projected value</small><b id="oVal">$0</b></div>
-      <div><small>Rental income (cum.)</small><b id="oRent">$0</b></div>
-      <div><small>Total return</small><b id="oTot">$0</b></div>
-      <div><small>ROI</small><b id="oRoi">0%</b></div>
-      <svg class="roi-chart" id="roiChart" viewBox="0 0 300 90" preserveAspectRatio="none" aria-hidden="true"></svg>
-    </div>
-  </div>
-</section>
-
-<!-- ===== TESTIMONIALS ===== -->
-<section class="section" id="words">
-  <header class="sec-head">
-    <p class="kicker reveal">Words</p>
-    <h2 class="h2 reveal">From the people we've placed.</h2>
-  </header>
-  <div class="testimonials reveal">
-    <div class="t-track" id="tTrack"></div>
-    <div class="t-dots" id="tDots"></div>
-  </div>
-</section>
-
-<!-- ===== MAP ===== -->
-<section class="section ink" id="visit">
-  <header class="sec-head light">
-    <p class="kicker reveal">Visit</p>
-    <h2 class="h2 reveal">Borrowdale, Harare.</h2>
-  </header>
-  <div class="map-wrap reveal">
-    <iframe
-      src="https://www.google.com/maps?q=Borrowdale,Harare,Zimbabwe&output=embed"
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      title="ESTATEZW office location"></iframe>
-    <div class="map-card glass">
-      <h4>ESTATEZW Atelier</h4>
-      <p>14 Whitwell Road<br/>Borrowdale, Harare</p>
-      <p><a href="tel:+263242000000">+263 242 000 000</a></p>
-      <p><a href="mailto:hello@estatezw.com">hello@estatezw.com</a></p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== BOOKING ===== -->
-<section class="section" id="contact">
-  <header class="sec-head">
-    <p class="kicker reveal">Book a viewing</p>
-    <h2 class="h2 reveal">Three short steps.</h2>
-  </header>
-
-  <form class="booking glass reveal" id="booking" novalidate>
-    <div class="steps">
-      <span class="step active" data-step="1">1 · Interest</span>
-      <span class="step" data-step="2">2 · When</span>
-      <span class="step" data-step="3">3 · You</span>
-    </div>
-
-    <fieldset class="step-pane active" data-pane="1">
-      <label><span>I'm interested in</span>
-        <select name="interest" required>
-          <option value="">Select…</option>
-          <option>A specific listing</option>
-          <option>Bespoke acquisition</option>
-          <option>Selling my residence</option>
-          <option>General enquiry</option>
-        </select>
-      </label>
-      <label><span>City</span>
-        <select name="bCity">
-          <option>Harare</option><option>Bulawayo</option>
-          <option>Nyanga</option><option>Victoria Falls</option>
-        </select>
-      </label>
-      <label><span>Budget (USD)</span>
-        <select name="budget">
-          <option>Under 250k</option><option>250k – 500k</option>
-          <option>500k – 1M</option><option>1M – 3M</option><option>3M+</option>
-        </select>
-      </label>
-      <div class="actions"><button type="button" class="btn btn-dark next">Continue</button></div>
-    </fieldset>
-
-    <fieldset class="step-pane" data-pane="2">
-      <label><span>Preferred date</span><input type="date" name="date" required /></label>
-      <label><span>Preferred time</span>
-        <select name="time">
-          <option>Morning</option><option>Midday</option>
-          <option>Afternoon</option><option>Evening</option>
-        </select>
-      </label>
-      <label><span>Notes</span><textarea name="notes" rows="3" placeholder="Anything we should know"></textarea></label>
-      <div class="actions">
-        <button type="button" class="btn btn-link prev">Back</button>
-        <button type="button" class="btn btn-dark next">Continue</button>
-      </div>
-    </fieldset>
-
-    <fieldset class="step-pane" data-pane="3">
-      <label><span>Full name</span><input type="text" name="name" required minlength="2" /></label>
-      <label><span>Email</span><input type="email" name="email" required /></label>
-      <label><span>Phone</span><input type="tel" name="phone" required minlength="6" /></label>
-      <div class="actions">
-        <button type="button" class="btn btn-link prev">Back</button>
-        <button type="submit" class="btn btn-bronze">Confirm booking</button>
-      </div>
-    </fieldset>
-
-    <div class="success" id="bookSuccess" hidden>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-      <h3>Thank you.</h3>
-      <p>An advisor will be in touch within one business day.</p>
-    </div>
-  </form>
-</section>
-
-<!-- ===== FOOTER ===== -->
-<footer class="footer">
-  <div class="foot-cta">
-    <h2 class="display"><em>Find</em> your next address.</h2>
-    <form class="newsletter" onsubmit="event.preventDefault();this.querySelector('button').textContent='Subscribed ✓'">
-      <input type="email" required placeholder="Your email" aria-label="Email" />
-      <button class="btn btn-bronze">Subscribe</button>
-    </form>
-  </div>
-  <div class="foot-meta">
-    <span>© <span id="yr"></span> ESTATEZW · Harare</span>
-    <nav>
-      <a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">Privacy</a>
-    </nav>
-  </div>
-</footer>
-
+<section class="section" id="contact"><div class="sec-head"><p class="kicker reveal">Book a viewing</p><h2 class="h2 reveal">Three short steps.</h2></div>
+<form class="booking glass" id="booking"><div class="steps"><span class="step active" data-step="1">1 · Interest</span><span class="step" data-step="2">2 · When</span><span class="step" data-step="3">3 · You</span></div>
+<fieldset class="step-pane active" data-pane="1"><label><span>I'm interested in</span><select name="interest" required><option value="">Select…</option><option>A specific listing</option><option>Bespoke acquisition</option></select></label><label><span>City</span><select name="bCity"><option>Harare</option><option>Bulawayo</option></select></label><label><span>Budget (USD)</span><select name="budget"><option>Under 250k</option><option>250k–500k</option><option>500k–1M</option></select></label><div class="actions"><button type="button" class="btn btn-dark next">Continue</button></div></fieldset>
+<fieldset class="step-pane" data-pane="2"><label><span>Preferred date</span><input type="date" name="date" required /></label><label><span>Preferred time</span><select name="time"><option>Morning</option><option>Afternoon</option></select></label><label><span>Notes</span><textarea name="notes" rows="2"></textarea></label><div class="actions"><button type="button" class="btn btn-link prev">Back</button><button type="button" class="btn btn-dark next">Continue</button></div></fieldset>
+<fieldset class="step-pane" data-pane="3"><label><span>Full name</span><input type="text" name="name" required /></label><label><span>Email</span><input type="email" name="email" required /></label><label><span>Phone</span><input type="tel" name="phone" required /></label><div class="actions"><button type="button" class="btn btn-link prev">Back</button><button type="submit" class="btn btn-bronze">Confirm booking</button></div></fieldset>
+<div class="success" id="bookSuccess" hidden><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6" fill="none" stroke="currentColor" stroke-width="2"/></svg><h3>Thank you.</h3><p>An advisor will be in touch within one business day.</p></div></form></section>
 </main>
 
-<!-- PWA install banner -->
-<div class="pwa-banner" id="pwaBanner" hidden>
-  <span>Add ESTATEZW to your home screen</span>
-  <button id="pwaInstall">Install</button>
-  <button id="pwaDismiss" aria-label="Dismiss">×</button>
-</div>
+<footer class="footer"><div class="foot-cta"><h2 class="display"><em>Find</em> your next address.</h2><form class="newsletter" onsubmit="event.preventDefault();this.querySelector('button').textContent='Subscribed ✓'"><input type="email" required placeholder="Your email" /><button class="btn btn-bronze">Subscribe</button></form></div><div class="foot-meta"><span>© <span id="yr"></span> ESTATEZW · Harare</span><nav><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">Privacy</a></nav></div></footer>
 
-<script src="assets/js/data.js" defer></script>
-<script src="assets/js/main.js" defer></script>
+<script>
+(()=>{
+const $=(s,p=document)=>p.querySelector(s), $$=(s,p=document)=>Array.from(p.querySelectorAll(s));
+const fmtUSD=n=>n>=1e6?"$"+(n/1e6).toFixed(n%1e6===0?0:1)+"M":n>=1e3?"$"+Math.round(n/1e3)+"k":"$"+n;
+$("#yr").textContent=new Date().getFullYear();
+
+const nav=$("#nav"); window.addEventListener("scroll",()=>nav.classList.toggle("scrolled",window.scrollY>30));
+const burger=$("#burger"),drawer=$("#drawer");
+burger?.addEventListener("click",()=>{drawer.classList.toggle("open");burger.classList.toggle("open");document.body.style.overflow=drawer.classList.contains("open")?"hidden":"";});
+$$("#drawer a").forEach(a=>a.addEventListener("click",()=>burger.click()));
+
+const ro=new IntersectionObserver(e=>e.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");ro.unobserve(e.target);}}),{threshold:0.12});
+$$(".reveal").forEach((el,i)=>{if(i%3===1)el.classList.add("delay-1");if(i%3===2)el.classList.add("delay-2");ro.observe(el);});
+
+const counters=$$(".num[data-count]"); new IntersectionObserver(entries=>{entries.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,end=+el.dataset.count;let start=0;const dur=1400,step=()=>{start+=20;const val=Math.min(end,Math.floor(end*(start/dur)));el.textContent=val;if(start<dur)requestAnimationFrame(step);else el.textContent=end;};requestAnimationFrame(step);ro.unobserve(el);});},{threshold:0.4}).observe(counters[0]);
+
+const E={listings:[{id:"borrowdale",name:"Villa Borrowdale",city:"Harare",type:"Villa",beds:5,price:2400000,img:"https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80"},{id:"vicfalls",name:"Zambezi Retreat",city:"Victoria Falls",type:"Estate",beds:6,price:3850000,img:"https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=80"},{id:"avondale",name:"Avondale Loft",city:"Harare",type:"Apartment",beds:2,price:285000,img:"https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80"},{id:"nyanga",name:"Stonefield, Nyanga",city:"Nyanga",type:"Villa",beds:4,price:920000,img:"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"},{id:"byo",name:"Hillside Modern",city:"Bulawayo",type:"Villa",beds:4,price:685000,img:"https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80"},{id:"hararetower",name:"Newlands Tower",city:"Harare",type:"Apartment",beds:3,price:540000,img:"https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=800&q=80"}],
+gallery:[{src:"https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",cls:"wide"},{src:"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",cls:"tall"},{src:"https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80",cls:""},{src:"https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80",cls:""},{src:"https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=80",cls:"wide"}],
+cases:[{title:"Avondale duplex",loc:"Harare",img:"https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80",stats:[{k:"Sale price",v:"$312k"},{k:"Days",v:"21"},{k:"ROI",v:"+24%"}]},{title:"Glen Lorne",loc:"Harare",img:"https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80",stats:[{k:"Price",v:"$1.18M"},{k:"Days",v:"34"},{k:"ROI",v:"+31%"}]}],
+testimonials:[{quote:"ESTATEZW found us a home before it ever reached the market.",who:"Tendai M.",img:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80"},{quote:"Their advisors understood the brief immediately.",who:"Daniel A.",img:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80"}]};
+const cardHTML=l=>`<article class="card"><div class="img"><img src="${l.img}" alt="${l.name}" loading="lazy"/><div class="price-tag">${fmtUSD(l.price)}</div></div><div class="body"><div class="loc">${l.city} · ${l.type}</div><h3>${l.name}</h3><div class="meta"><span>${l.beds} bd</span></div></div></article>`;
+const featured=$("#featuredGrid"); if(featured)featured.innerHTML=E.listings.slice(0,6).map(cardHTML).join("");
+
+const dGrid=$("#discoverGrid"),empty=$("#emptyState"),fCity=$("#fCity"),fType=$("#fType"),fBeds=$("#fBeds"),fPrice=$("#fPrice"),fLabel=$("#fPriceLabel"),fReset=$("#fReset");
+function renderDiscover(){const c=fCity.value,t=fType.value,b=+fBeds.value,p=+fPrice.value;const out=E.listings.filter(l=>(!c||l.city===c)&&(!t||l.type===t)&&(!b||l.beds>=b)&&l.price<=p);fLabel.textContent=fmtUSD(p);if(!out.length){dGrid.innerHTML="";empty.hidden=false;return;}empty.hidden=true;dGrid.innerHTML=out.map(cardHTML).join("");}
+[fCity,fType,fBeds,fPrice].forEach(el=>el?.addEventListener("input",renderDiscover));fReset?.addEventListener("click",()=>{fCity.value="";fType.value="";fBeds.value="0";fPrice.value=5000000;renderDiscover();});renderDiscover();
+
+const vid=$("#heroVid"),playBtn=$("#playBtn");playBtn?.addEventListener("click",()=>{vid.muted=false;vid.play();playBtn.classList.add("hidden");});
+$$(".hot").forEach(h=>h.addEventListener("click",function(){$$(".hot").forEach(x=>x.classList.remove("active"));this.classList.add("active");$("#hotInfo").innerHTML=`<strong>${this.dataset.room}</strong><span>${this.dataset.info}</span>`;}));
+const gg=$("#gallery-grid");if(gg)gg.innerHTML=E.gallery.map(g=>`<a href="${g.src}" class="${g.cls}"><img src="${g.src}" loading="lazy"/></a>`).join("");
+const lb=$("#lightbox"),lbImg=lb?.querySelector("img"),lbClose=lb?.querySelector(".lb-close");
+gg?.addEventListener("click",e=>{const a=e.target.closest("a");if(a){e.preventDefault();lbImg.src=a.href;lb.classList.add("open");}});
+lbClose?.addEventListener("click",()=>{lb.classList.remove("open");lbImg.src="";});lb?.addEventListener("click",e=>{if(e.target===lb)lbClose.click();});
+const cg=$("#caseGrid");if(cg)cg.innerHTML=E.cases.map(c=>`<article class="case"><div class="img"><img src="${c.img}" loading="lazy"/></div><div class="body"><div class="loc">${c.loc}</div><h4>${c.title}</h4><div class="stats">${c.stats.map(s=>`<div><small>${s.k}</small><b>${s.v}</b></div>`).join("")}</div></div></article>`).join("");
+const rPrice=$("#rPrice"),rYield=$("#rYield"),rApp=$("#rApp"),rYears=$("#rYears"),oVal=$("#oVal"),oRent=$("#oRent"),oTot=$("#oTot"),oRoi=$("#oRoi"),chart=$("#roiChart");
+function calcROI(){const p=+rPrice.value||0,yld=(+rYield.value||0)/100,app=(+rApp.value||0)/100,yrs=Math.min(30,+rYears.value||1);let val=p,rent=0;for(let i=0;i<yrs;i++){rent+=p*yld*Math.pow(1+app,i);val=p*Math.pow(1+app,i+1);}const total=val+rent,roi=((total-p)/p)*100;oVal.textContent="$"+Math.round(val).toLocaleString();oRent.textContent="$"+Math.round(rent).toLocaleString();oTot.textContent="$"+Math.round(total).toLocaleString();oRoi.textContent=roi.toFixed(0)+"%";chart.innerHTML=`<polygon points="0,90 300,90 300,10 0,30" fill="#9a6b3f20"/><polyline points="0,80 300,20" fill="none" stroke="#9a6b3f" stroke-width="2"/>`;}
+[rPrice,rYield,rApp,rYears].forEach(el=>el?.addEventListener("input",calcROI));calcROI();
+const track=$("#tTrack"),dots=$("#tDots");if(track){track.innerHTML=E.testimonials.map(t=>`<div class="t-card"><img src="${t.img}" alt=""/><div><blockquote>"${t.quote}"</blockquote><cite>— ${t.who}</cite></div></div>`).join("");dots.innerHTML=E.testimonials.map((_,i)=>`<button data-i="${i}" class="${i===0?"active":""}"></button>`).join("");let idx=0;const go=i=>{idx=(i+E.testimonials.length)%E.testimonials.length;track.style.transform=`translateX(-${idx*100}%)`;$$("#tDots button").forEach((b,j)=>b.classList.toggle("active",j===idx));};dots.addEventListener("click",e=>{const b=e.target.closest("button");if(b)go(+b.dataset.i);});setInterval(()=>go(idx+1),5000);}
+const form=$("#booking");if(form){const panes=$$(".step-pane"),tabs=$$(".step");let step=1;const show=n=>{step=n;panes.forEach(p=>p.classList.toggle("active",+p.dataset.pane===n));tabs.forEach(t=>t.classList.toggle("active",+t.dataset.step<=n));};form.addEventListener("click",e=>{if(e.target.classList.contains("next")){const cur=panes[step-1];if(!$$("input,select",cur).every(i=>i.checkValidity())){cur.querySelector(":invalid")?.reportValidity();return;}show(Math.min(3,step+1));}if(e.target.classList.contains("prev"))show(Math.max(1,step-1));});form.addEventListener("submit",e=>{e.preventDefault();if(!form.checkValidity())return;$("#bookSuccess").hidden=false;});}
+})();
+</script>
 </body>
 </html>
